@@ -14,6 +14,7 @@ It should looks like this:
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://jitpack.io' }
     }
 }
 ```
@@ -22,3 +23,11 @@ It should looks like this:
 implementation 'com.github.re-ovo:ZoomableComposeImage:1.0.1'
 ```
 3. Sync the project
+
+## Usage
+```kotlin
+ZoomableImage(
+    modifier = Modifier.size(200.dp).background(Color.Black),
+    painter = your painter here
+)
+```
