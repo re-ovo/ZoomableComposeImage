@@ -1,4 +1,10 @@
 # ZoomableComposeImage
+[![](https://jitpack.io/v/re-ovo/ZoomableComposeImage.svg)](https://jitpack.io/#re-ovo/ZoomableComposeImage)
+[![GitHub issues](https://img.shields.io/github/issues/re-ovo/ZoomableComposeImage)](https://github.com/re-ovo/ZoomableComposeImage/issues)
+[![GitHub stars](https://img.shields.io/github/stars/re-ovo/ZoomableComposeImage)](https://github.com/re-ovo/ZoomableComposeImage/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/re-ovo/ZoomableComposeImage)](https://github.com/re-ovo/ZoomableComposeImage/network)
+[![GitHub license](https://img.shields.io/github/license/re-ovo/ZoomableComposeImage)](https://github.com/re-ovo/ZoomableComposeImage)
+
 A zoomable image for jetpack compose
 
 ## Features
@@ -26,8 +32,9 @@ implementation 'com.github.re-ovo:ZoomableComposeImage:1.0.1'
 
 ## Usage
 ```kotlin
+// Example usage
 ZoomableImage(
-    modifier = Modifier.size(200.dp).background(Color.Black),
-    painter = your painter here
+    modifier = your Modifier,
+    painter = your painter here (Recommended to use with coil)
 )
 ```
