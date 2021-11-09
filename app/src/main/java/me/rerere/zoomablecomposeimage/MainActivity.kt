@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
                     ZoomableImage(
                         modifier = Modifier.size(200.dp).background(Color.Black),
                         painter = rememberImagePainter(
-                            data = "https://i0.hdslb.com/bfs/archive/9e5f278027ae7f1e1933b6e4002870361da6c20b.png"
+                            data = "https://www.google.com.hk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
                         )
                     )
                 }
