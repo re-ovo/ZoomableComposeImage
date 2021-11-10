@@ -15,7 +15,7 @@ A zoomable image for jetpack compose
 1. Open settings.gradle, and add `maven { url 'https://jitpack.io' }` into repositories   
 It should looks like this:   
 ```groovy
-   dependencyResolutionManagement {
+dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
