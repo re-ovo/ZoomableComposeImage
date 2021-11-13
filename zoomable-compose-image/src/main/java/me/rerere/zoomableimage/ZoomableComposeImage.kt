@@ -29,6 +29,7 @@ fun ZoomableImage(
     modifier: Modifier = Modifier,
     painter: Painter,
     contentDescription: String? = null,
+    contentScale: ContentScale = ContentScale.Fit,
     zoomable: Boolean = true
 ) {
     var size by remember {
@@ -48,7 +49,7 @@ fun ZoomableImage(
     fun limitOffset() {
         val srcSize = Size(painter.intrinsicSize.width, painter.intrinsicSize.height)
         val destSize = size.toSize()
-        val scaleFactor : ScaleFactor = ContentScale.Fit.computeScaleFactor(srcSize,destSize)
+        val scaleFactor : ScaleFactor = contentScale.computeScaleFactor(srcSize,destSize)
 
         val currentWidth = painter.intrinsicSize.width * zoomState * scaleFactor.scaleX
         val currentHeight = painter.intrinsicSize.height * zoomState * scaleFactor.scaleY
