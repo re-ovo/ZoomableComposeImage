@@ -4,11 +4,13 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.detectTransformGestures
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.geometry.isUnspecified
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.input.pointer.pointerInput
@@ -47,6 +49,9 @@ fun ZoomableImage(
     val zoomAnimated by animateFloatAsState(targetValue = zoomState)
 
     fun limitOffset() {
+        if(painter.intrinsicSize.isUnspecified){
+            return
+        }
         val srcSize = Size(painter.intrinsicSize.width, painter.intrinsicSize.height)
         val destSize = size.toSize()
         val scaleFactor : ScaleFactor = contentScale.computeScaleFactor(srcSize,destSize)
@@ -100,8 +105,10 @@ fun ZoomableImage(
                     zoomState += zoom - 1
                     zoomState = zoomState.coerceAtLeast(1f)
 
-                    offsetXState += pan.x * zoomState
-                    offsetYState += pan.y * zoomState
+                    if(zoomState > 1f) {
+                        offsetXState += pan.x * zoomState
+                        offsetYState += pan.y * zoomState
+                    }
 
                     limitOffset()
                 }
