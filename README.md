@@ -26,7 +26,7 @@ dependencyResolutionManagement {
 ```
 2. Add the dependency in `build.gradle`
 ```groovy
-implementation 'com.github.re-ovo:ZoomableComposeImage:1.0.1'
+implementation 'com.github.re-ovo:ZoomableComposeImage:1.0.3'
 ```
 3. Sync the project
 
