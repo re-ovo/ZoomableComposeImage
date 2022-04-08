@@ -49,17 +49,17 @@ fun ZoomableImage(
     val zoomAnimated by animateFloatAsState(targetValue = zoomState)
 
     fun limitOffset() {
-        if(painter.intrinsicSize.isUnspecified){
+        if (painter.intrinsicSize.isUnspecified) {
             return
         }
         val srcSize = Size(painter.intrinsicSize.width, painter.intrinsicSize.height)
         val destSize = size.toSize()
-        val scaleFactor : ScaleFactor = contentScale.computeScaleFactor(srcSize,destSize)
+        val scaleFactor: ScaleFactor = contentScale.computeScaleFactor(srcSize, destSize)
 
         val currentWidth = painter.intrinsicSize.width * zoomState * scaleFactor.scaleX
         val currentHeight = painter.intrinsicSize.height * zoomState * scaleFactor.scaleY
 
-        offsetXState = if(currentWidth >= size.width){
+        offsetXState = if (currentWidth >= size.width) {
             val sizeDiff = (currentWidth - size.width) / 2
             offsetXState.coerceIn(
                 (-sizeDiff)..sizeDiff
@@ -71,7 +71,7 @@ fun ZoomableImage(
             )
         }
 
-        offsetYState = if(currentHeight >= size.height){
+        offsetYState = if (currentHeight >= size.height) {
             val sizeDiff = (currentHeight - size.height) / 2
             offsetYState.coerceIn(
                 (-sizeDiff)..sizeDiff
@@ -91,7 +91,7 @@ fun ZoomableImage(
                 size = it.size
             }
             .graphicsLayer {
-                if(zoomable) {
+                if (zoomable) {
                     this.scaleX = zoomAnimated
                     this.scaleY = zoomAnimated
 
@@ -105,7 +105,7 @@ fun ZoomableImage(
                     zoomState += zoom - 1
                     zoomState = zoomState.coerceAtLeast(1f)
 
-                    if(zoomState > 1f) {
+                    if (zoomState > 1f) {
                         offsetXState += pan.x * zoomState
                         offsetYState += pan.y * zoomState
                     }
