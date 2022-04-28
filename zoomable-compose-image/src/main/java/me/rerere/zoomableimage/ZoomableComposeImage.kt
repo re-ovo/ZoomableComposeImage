@@ -4,6 +4,8 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.detectTransformGestures
+import androidx.compose.foundation.gestures.rememberTransformableState
+import androidx.compose.foundation.gestures.transformable
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.*
@@ -99,9 +101,9 @@ fun ZoomableImage(
                     this.translationY = offsetYState
                 }
             }
-            .pointerInput(Unit) {
-                // use gesture to adjust zoom/offset
-                detectTransformGestures { _, pan, zoom, _ ->
+            .transformable(
+                enabled = zoomable,
+                state = rememberTransformableState { zoom, pan, _ ->
                     zoomState += zoom - 1
                     zoomState = zoomState.coerceAtLeast(1f)
 
@@ -111,8 +113,9 @@ fun ZoomableImage(
                     }
 
                     limitOffset()
-                }
-            }
+                },
+                lockRotationOnZoomPan = true
+            )
             .pointerInput(Unit) {
                 // Double tap to zoom/un-zoom
                 detectTapGestures(

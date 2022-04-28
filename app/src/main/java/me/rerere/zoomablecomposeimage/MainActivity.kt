@@ -4,8 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
@@ -30,17 +29,35 @@ class MainActivity : ComponentActivity() {
                             }
                         )
                     }
-                ) {
-                    LazyColumn {
-                        items(10) {
-                            ZoomableImage(
-                                modifier = Modifier
-                                    .size(200.dp)
-                                    .background(Color.Black),
-                                painter = rememberImagePainter(
-                                    data = "https://www.google.com.hk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
-                                )
+                ) { innerPadding ->
+                    Column(
+                        modifier = Modifier.padding(innerPadding),
+                        verticalArrangement = Arrangement.spacedBy(16.dp)
+                    ) {
+                        ZoomableImage(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .aspectRatio(16 / 9f)
+                                .background(Color.Black),
+                            painter = rememberImagePainter(
+                                data = "https://www.google.com.hk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
                             )
+                        )
+
+                        LazyColumn(
+                            modifier = Modifier.fillMaxSize()
+                        ) {
+                            items(10) {
+                                ZoomableImage(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .aspectRatio(16 / 9f)
+                                        .background(Color.Black),
+                                    painter = rememberImagePainter(
+                                        data = "https://www.google.com.hk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+                                    )
+                                )
+                            }
                         }
                     }
                 }
