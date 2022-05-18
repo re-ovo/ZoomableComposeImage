@@ -12,6 +12,7 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import coil.compose.rememberAsyncImagePainter
 import coil.compose.rememberImagePainter
 import me.rerere.zoomablecomposeimage.ui.theme.ZoomableComposeImageTheme
 import me.rerere.zoomableimage.ZoomableImage
@@ -39,8 +40,8 @@ class MainActivity : ComponentActivity() {
                                 .fillMaxWidth()
                                 .aspectRatio(16 / 9f)
                                 .background(Color.Black),
-                            painter = rememberImagePainter(
-                                data = "https://www.google.com.hk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+                            painter = rememberAsyncImagePainter(
+                                model = "https://www.google.com.hk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
                             )
                         )
 
@@ -53,8 +54,8 @@ class MainActivity : ComponentActivity() {
                                         .fillMaxWidth()
                                         .aspectRatio(16 / 9f)
                                         .background(Color.Black),
-                                    painter = rememberImagePainter(
-                                        data = "https://www.google.com.hk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+                                    painter = rememberAsyncImagePainter(
+                                        model = "https://www.google.com.hk/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
                                     )
                                 )
                             }
